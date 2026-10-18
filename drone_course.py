@@ -10,12 +10,12 @@ class Drone:
         
         return f"{self.name}: {self.battery}% "
 
-    def charge(self,amount):
+    def charge(self,amount):  
+        if amount < 0: 
+            raise ValueError("Charge amount cannot be negative")
         self.battery += amount 
         if self.battery> 100:
             self.battery = 100
-
-        
 
 
 class CargoDrone(Drone):
@@ -42,20 +42,7 @@ class RacingDrone(Drone):
 
 
 
-print("__Создание дронов__")
 
-d1 = Drone("ALFA",100)
-d2 = RacingDrone("betta",100,5)
-print(d1)
-print(d2)
-
-print("__Полет 10 минут__")
-
-d1.fly(10)
-d2.fly(10)
-
-print(d1)
-print(d2)
     
 
 
